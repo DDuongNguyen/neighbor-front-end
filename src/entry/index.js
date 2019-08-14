@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import SignIn from './sign-in.js'
-import SignUp from './sign-up.js'
+// import SignUp from './sign-up.js'
+import SignUp from './sign-up-validate.js'
 import NavBar from '../nav-bar/nav-bar.js'
 import {connect} from 'react-redux'
 class Entry extends Component {
