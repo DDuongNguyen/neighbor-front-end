@@ -1,5 +1,68 @@
+I need to Learn
+1. geolocation- front (specifically radius and current location)
+2. twillio- front
+3. agendajs- front
+4. calendar- front
+5. resource worker- front***
+6. WEBSOCKEEETTT- front ***
+7. bootstrap/semantic or ONE OF THOSE UI STUFF- front
+<!-- 8. self-referential- back -->
+<!-- 9. redux- front *** -->
+10. how to relax- irl
+11. uploading pictures? active storage install somehow belongs to a current user
+12. active job/cron job
+<!-- geolocation -->
+twilio
+bootstrap
+
+on top of things ill be using
+<!-- 1. JWT -->
+<!-- 2. Bcrypt -->
+<!-- 3. Cors -->
+4.
+
+
+i sign up with username, name, password, phone number and address/ optional pic_url
+
+
+i host an event
+(chat)
+neighbors with a radius of x to join
+
+(self-referential and geolocation)
+
+i delegate what i need if they come to that event? -> tasks
+(another model)
+
+i can also blacklist address i dont wanna join
+remove who can join
+
+set limit of how many people who can join?
+
+PM-ing features (websocket so dont even think about it.)
+
+issue: how do they prove that they own the house beside from putting in the address
+=> maybe through uploading a picture of ID ? maybe scanning picture of that id? do i keep the data of that id then?
+=> maybe keep image of the ID then have a log in page for admin to check on that user ID then manually update their address to where they have.
+-> have a search bar in all users page
+
+
+
+
+<script type='text/javascript' src='http://www.bing.com/api/maps/mapcontrol?callback=GetMap&key=AoNK51DE7kLoGiY_RWNUvx3gFfgSsBHMiJN45CLjB9GIVNR7HheV8RMEd6bAc3ox' async defer></script>
+####################################################################################################
+AoNK51DE7kLoGiY_RWNUvx3gFfgSsBHMiJN45CLjB9GIVNR7HheV8RMEd6bAc3ox
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+http://dev.virtualearth.net/REST/v1/Locations/US/{adminDistrict}/{postalCode}/{locality}/{addressLine}?&key={BingMapsAPIKey}
+
+
+http://dev.virtualearth.net/REST/v1/Locations/US/WA/98052/Redmond/1%20Microsoft%20Way?o=json&key=AoNK51DE7kLoGiY_RWNUvx3gFfgSsBHMiJN45CLjB9GIVNR7HheV8RMEd6bAc3ox
+longtitude= data.resourceSets[0].resources[0].bbox[0]
+latitude= data.resourceSets[0].resources[0].bbox[1]
+longtitude: -122.128156, latitude: 47.639555
+longtitude: 47.639555, latitude: -122.128156*
 ## Available Scripts
 
 In the project directory, you can run:

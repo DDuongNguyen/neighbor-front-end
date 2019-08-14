@@ -1,26 +1,49 @@
 import React from 'react';
-import logo from './logo.svg';
+import Routes from "./Routes.js";
+import {connect} from 'react-redux'
+import userActions from './actions/userActions'
+import { BrowserRouter as Router } from "react-router-dom";
+// import NavBar from './nav-bar/nav-bar.js'
 import './App.css';
 
-function App() {
+class App extends React.Component {
+
+  componentDidMount(){
+    // const a= '81 Prospect St, Brooklyn, NY, 11201, USA'
+    // const b= 'Central Park Zoo'
+    // fetch(`http://dev.virtualearth.net/REST/V1/Routes/Walking?waypoint.0=${a}&waypoint.1=${b}&distanceUnit=mi&optmz=distance&output=json&key=AoNK51DE7kLoGiY_RWNUvx3gFfgSsBHMiJN45CLjB9GIVNR7HheV8RMEd6bAc3ox`)
+    // .then(resp => resp.json())
+    if (localStorage.token) {
+      this.props.persistUser();
+      // if(this.props.user.userReducer.currentUser !== {}){
+      // const id= this.props.user.userReducer.currentUser.id
+      // // debugger
+      // fetch(`http://localhost:3000/users/${id}`)
+      // .then(resp=>resp.json())
+      // .then(data => {
+      //   console.log(data);
+        // debugger
+      }
+    }
+  
+render(){
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+      <h1>Main Comp: App</h1>
+      <Router>
+        <Routes />
+      </Router>
       </header>
     </div>
   );
 }
+}
 
-export default App;
+const mapDispatchToProps = {
+  persistUser: userActions.persistUser
+}
+
+const mapStateToProps = state => ({user:state})
+
+export default connect(mapStateToProps,mapDispatchToProps)(App);
