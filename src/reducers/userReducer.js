@@ -4,14 +4,14 @@ const defaultState = {
 
 export default (state = defaultState, { type, payload }) => {
   switch (type) {
-    case "LOGIN":
+    case "SIGNIN":
       return {...state, currentUser:payload};
     case "SIGNUP":
       return payload;
     case "PERSIST":
       return {...state, currentUser:payload};
     case "LOGOUT":
-      return {};
+      return defaultState;
     default:
       return state;
   }

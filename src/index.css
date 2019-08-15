@@ -21,6 +21,6 @@ code {
   display: inline-block;
   position: relative;
   height: 500px;
-  width: 100%;
+  width: 100vw;
   cursor:pointer;
 }

@@ -4,11 +4,29 @@ import  userActions from '../actions/userActions.js'
 
 class Sections extends Component {
 
+  conditionalNav = () => {
+    if (this.props.currentUser.id){
+      // debugger
+      return(
+        <button onClick={this.props.logOut}>Sign Out</button>
+      )
+    }
+    else{
+      // debugger
+      return(
+        <div>
+        <button>Log In</button>
+        <button>Sign up</button>
+        </div>)}
+  }
+
+
+
   render() {
     return (
       <div>
       <h4>Layer 3: NavBar-sections</h4>
-      <button onClick={this.props.logOut}>Sign Out</button>
+      {this.conditionalNav()}
       </div>
     );
   }
@@ -17,4 +35,8 @@ class Sections extends Component {
 const mapDispatchToProps={
   logOut: userActions.logOut
 }
-export default connect(null,mapDispatchToProps)(Sections);
+
+const mapStateToProps = (state) => ({
+  currentUser: state.userReducer.currentUser
+})
+export default connect(mapStateToProps,mapDispatchToProps)(Sections);

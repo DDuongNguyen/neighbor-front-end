@@ -1,11 +1,11 @@
 const defaultState = {
-  sidebar: false
+  events: []
 }
 
 export default (state = defaultState, { type, payload }) => {
   switch (type) {
-    case "OPEN-SIDE-BAR":
-      return {...state, sidebar:true};
+    case "SAVE":
+      return {...state, events:payload};
     default:
       return state;
   }
