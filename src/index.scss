@@ -1,0 +1,138 @@
+html,
+body {
+    height: 200vh;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+#map{
+  display: inline-block;
+  position: relative;
+  height: 500px;
+  width: 100vw;
+  cursor:pointer;
+}
+
+.sidebar{
+  position: absolute;
+  z-index: 1;
+  background-color: rgba(241, 241, 241,0.9);
+  overflow-y: scroll;
+  max-height: 500px;
+  max-width: 300px;
+  height: 500px;
+  margin-top: 0;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+  transition: opacity .3s ease-out, visibility .3s ease-out;
+    h1{
+      margin-top: 0;
+      font-size: 13px;
+      font-family: 'Google Sans',Roboto, Arial,sans-serif;
+      color: black;
+      margin-bottom: 10px;
+    }
+    p{
+          color: black;
+          font-weight: 500;
+          margin-bottom: 0;
+          margin-top: 0;
+    }
+    h4{
+          color: black;
+          font-weight: 500;
+          margin-bottom: 0;
+          margin-top: 0;
+    }
+  }
+
+#event-card{
+  box-shadow: -2px 2px 4px rgb(0, 0, 0);
+}
+
+#reserved-button{
+  background-color: #fff;
+  cursor: pointer;
+  font-family: 'Roboto', sans-serif;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  font-weight: 500;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease 0s;
+  border-radius: 0px;
+  outline: none;
+  height: 36px;
+  width: 50%;
+    &:hover {
+    background-color: #2EE59D;
+    box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+    color: #fff;
+    transform: translateY(-7px);
+  }
+}
+
+#button-section{
+  margin-top: 0;
+}
+
+#message-button{
+  background-color: #fff;
+  cursor: pointer;
+  font-family: 'Roboto', sans-serif;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  font-weight: 500;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease 0s;
+  border-radius: 0px;
+  outline: none;
+  height: 36px;
+  width: 50%;
+    &:hover {
+    background-color: #2EE59D;
+    box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+    color: #fff;
+    transform: translateY(-7px);
+  }
+}
+
+#img-container{
+  // box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+}
+
+#event-descriptions{
+  // box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+  margin-bottom: 0;
+}
+
+.image-upload > input {
+  cursor: pointer;
+  visibility:hidden;
+  width:0;
+  height:0
+}
+
+#upload-icon{
+  cursor: pointer;
+  width: 50px;
+  height: 50px;
+  padding-top: 15px;
+}
+
+#line{
+height: 0px;
+border-bottom: 1px solid #e6e6e6;
+}

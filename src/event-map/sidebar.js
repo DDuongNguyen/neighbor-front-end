@@ -16,11 +16,8 @@ class App extends React.Component {
   }
 }
 
-const mapStateToProps = state => ({
-  sidebarStatus: state.mapReducer.sidebar
-})
 
-export default connect(mapStateToProps,null)(App)
+export default App
 
 
 
