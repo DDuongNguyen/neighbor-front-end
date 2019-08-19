@@ -58,9 +58,20 @@ const logOut = () => dispatch =>{
   dispatch({type:'LOGOUT',payload:''})
 }
 
+
+const getUsers = () => dispatch => {
+
+  fetch("http://localhost:3000/users")
+    .then(resp => resp.json())
+    .then(users => {
+      dispatch({type:'GET',payload:users});
+    });
+};
+
 export default {
   signUp,
   signIn,
   logOut,
+  getUsers,
   persistUser
 }

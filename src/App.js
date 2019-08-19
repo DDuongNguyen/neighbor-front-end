@@ -15,6 +15,7 @@ class App extends React.Component {
     // fetch(`http://dev.virtualearth.net/REST/V1/Routes/Walking?waypoint.0=${a}&waypoint.1=${b}&distanceUnit=mi&optmz=distance&output=json&key=AoNK51DE7kLoGiY_RWNUvx3gFfgSsBHMiJN45CLjB9GIVNR7HheV8RMEd6bAc3ox`)
     // .then(resp => resp.json())
       this.props.saveEvents()
+      this.props.getUsers()
     if (localStorage.token) {
       this.props.persistUser();
       // if(this.props.user.userReducer.currentUser !== {}){
@@ -46,7 +47,8 @@ render(){
 
 const mapDispatchToProps = {
   persistUser: userActions.persistUser,
-  saveEvents: eventActions.saveEvents
+  saveEvents: eventActions.saveEvents,
+  getUsers: userActions.getUsers
 }
 
 const mapStateToProps = state => ({user:state})

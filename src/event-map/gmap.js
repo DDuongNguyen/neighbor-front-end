@@ -13,29 +13,59 @@ import EventSidebar from './event-sidebar.js'
 class gMap extends Component {
 
     renderAllEvents = () => {
-      debugger
-      let events = this.props.events.filter(event => event.host_name !== this.props.currentUser.name);
-      return events.map(event => {
-        return(
-        <Marker
-        onClick={() => this.props.openEventSidebar(event)}
-        name={event.name}
-        description={event.description}
-        time={event.time}
-        host_name={event.host_name}
-        event_address={event.event_address}
-        number_of_guests={event.number_of_guests}
-        title={'event-marker.'}
-        key={event.id}
-        position={{
-          lat:event.event_latitude,
-          lng:event.event_longtitude
-        }}
-        />
-      )
+      // debugger
 
-    })
-    }
+      let users = this.props.users
+      return users.map(user => {
+        const longtitude=user.address_longtitude
+        const latitude=user.address_latitude
+        const host_name= user.name
+        const address= user.address
+
+        if (user.number_of_events_hosting > 0){
+          return user.event_hosting.map(event => {
+            return(
+               <Marker
+               onClick={() => this.props.openEventSidebar(event)}
+               name={event.name}
+               description={event.description}
+               time={event.time}
+               host_name={host_name}
+               event_address={address}
+               number_of_guests={event.number_of_guests}
+               title={'event-marker.'}
+               key={event.id}
+               position={{
+                 lat:latitude,
+                 lng:longtitude
+               }}
+               />
+             )})
+          }
+        })
+        }
+
+    //   return events.map(event => {
+    //     return(
+    //     <Marker
+    //     onClick={() => this.props.openEventSidebar(event)}
+    //     name={event.name}
+    //     description={event.description}
+    //     time={event.time}
+    //     host_name={event.host_name}
+    //     event_address={event.event_address}
+    //     number_of_guests={event.number_of_guests}
+    //     title={'event-marker.'}
+    //     key={event.id}
+    //     position={{
+    //       lat:event.event_latitude,
+    //       lng:event.event_longtitude
+    //     }}
+    //     />
+    //   )
+    // })
+
+
 
     onMapClicked = () => {
       this.props.closeSidebar()
@@ -109,7 +139,8 @@ class gMap extends Component {
       currentUser: state.userReducer.currentUser,
       events: state.eventReducer.events,
       sidebarStatus: state.mapReducer.sidebar,
-      eventSidebarStatus: state.mapReducer.eventSidebar
+      eventSidebarStatus: state.mapReducer.eventSidebar,
+      users: state.userReducer.users
     })
 
     const mapDispatchToProps = {
