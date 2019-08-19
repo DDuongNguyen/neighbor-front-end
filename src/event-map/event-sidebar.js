@@ -10,7 +10,6 @@ class EventSidebar extends React.Component {
       const host_name= this.props.user.name
       const address= this.props.user.adress
       return this.props.user.event_hosting.map(event => {
-        debugger
         return (<Events
         className='none-user-events'
         key= {event.id}

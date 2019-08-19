@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
+import eventActions from '../actions/eventActions.js'
 
 class Events extends Component {
 
@@ -8,7 +9,6 @@ class Events extends Component {
   }
 
   currentUserEvents = () => {
-    debugger
     if(this.props.className === 'user-event'){
     return(
       <div id='event-card'>
@@ -25,18 +25,19 @@ class Events extends Component {
       <div id='event-descriptions'>
       <h1>{this.props.event.name}</h1>
       <h4>Description: {this.props.event.description}</h4>
+      <p>Host Name: {this.props.event.host_name} </p>
       <p>Number of Guests:{this.props.event.number_of_guests}</p>
       </div>
 
       <div id='button-section'>
-      <button id='reserved-button'>Invite</button>
+      <button id='invite-button' onClick={() => this.props.createInvite(this.props.event.host_id)}>Invite</button>
       <button id='message-button'>Message</button>
       </div>
       </div>
     )
     }
       else if(this.props.className === 'none-user-events'){
-        debugger
+
       return(
         <div id='event-card'>
 
@@ -52,12 +53,13 @@ class Events extends Component {
         <div id='event-descriptions'>
         <h1>{this.props.event.name}</h1>
         <h4>Description: {this.props.event.description}</h4>
+        <p>Host Name: {this.props.event.host_name} </p>
         <p>Number of Guests:{this.props.event.number_of_guests}</p>
         </div>
 
         <div id='button-section'>
-        <button id='reserved-button'>Join</button>
-        <button id='message-button'>Message</button>
+        <button id='join-button' onClick={() => this.props.createInvite(this.props.event.host_id,this.props.currentUser.id,this.props.event.id)}>Join</button>
+        <button id='message-button' >Message</button>
         </div>
         </div>
       )
@@ -84,5 +86,9 @@ const mapStateToProps = state =>({
   events: state.eventReducer.events
 })
 
+const mapDispatchToProps = {
+  createInvite: eventActions.createInvite
+}
 
-export default connect(mapStateToProps)(Events)
+
+export default connect(mapStateToProps,mapDispatchToProps)(Events)
