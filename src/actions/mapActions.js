@@ -5,11 +5,11 @@ const closeSidebar = () => dispatch => {
     dispatch({type:'CLOSE-SIDE-BAR'});
     }
 
-const openEventSidebar = (events) => dispatch => {
-    dispatch({type:'OPEN-EVENT-SIDE-BAR',payload: events});
+const openEventSidebar = (user) => dispatch => {
+    dispatch({type:'OPEN-EVENT-SIDE-BAR',payload: user});
     }
-const closeEventSidebar = (events) => dispatch => {
-    dispatch({type:'CLOSE-EVENT-SIDE-BAR',payload: events});
+const closeEventSidebar = (user) => dispatch => {
+    dispatch({type:'CLOSE-EVENT-SIDE-BAR',payload: user});
     }
 
 export default {

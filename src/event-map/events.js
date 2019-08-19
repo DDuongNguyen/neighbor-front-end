@@ -8,7 +8,8 @@ class Events extends Component {
   }
 
   currentUserEvents = () => {
-    if(this.props.event){
+    debugger
+    if(this.props.className === 'user-event'){
     return(
       <div id='event-card'>
 
@@ -28,13 +29,14 @@ class Events extends Component {
       </div>
 
       <div id='button-section'>
-      <button id='reserved-button'>Reserve</button>
+      <button id='reserved-button'>Invite</button>
       <button id='message-button'>Message</button>
       </div>
       </div>
     )
     }
-      else if(this.props.name){
+      else if(this.props.className === 'none-user-events'){
+        debugger
       return(
         <div id='event-card'>
 
@@ -48,13 +50,13 @@ class Events extends Component {
         <div id='line'/>
 
         <div id='event-descriptions'>
-        <h1>{this.props.name}</h1>
-        <h4>Description: {this.props.description}</h4>
-        <p>Number of Guests:{this.props.number_of_guests}</p>
+        <h1>{this.props.event.name}</h1>
+        <h4>Description: {this.props.event.description}</h4>
+        <p>Number of Guests:{this.props.event.number_of_guests}</p>
         </div>
 
         <div id='button-section'>
-        <button id='reserved-button'>Reserve</button>
+        <button id='reserved-button'>Join</button>
         <button id='message-button'>Message</button>
         </div>
         </div>

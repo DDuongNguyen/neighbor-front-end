@@ -7,7 +7,7 @@ class MySidebar extends React.Component {
   conditionalEvents = () => {
     if(this.props.currentUser.event_hosting){
     return this.props.currentUser.event_hosting.map(event => {
-      return <Events key={event.id} event={event}/>
+      return <Events className='user-event' key={event.id} event={event}/>
     })
   }
   }

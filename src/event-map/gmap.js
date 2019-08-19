@@ -15,57 +15,49 @@ class gMap extends Component {
     renderAllEvents = () => {
       // debugger
 
-      // let users = this.props.users
-      // return users.map(user => {
-      //   const longtitude=user.address_longtitude
-      //   const latitude=user.address_latitude
-      //   const host_name= user.name
-      //   const address= user.address
-      //
-      //   if (user.number_of_events_hosting > 0){
-      //     return user.event_hosting.map(event => {
-      //       return(
-      //          <Marker
-      //          onClick={() => this.props.openEventSidebar(event)}
-      //          name={event.name}
-      //          description={event.description}
-      //          time={event.time}
-      //          host_name={host_name}
-      //          event_address={address}
-      //          number_of_guests={event.number_of_guests}
-      //          title={'event-marker.'}
-      //          key={event.id}
-      //          position={{
-      //            lat:latitude,
-      //            lng:longtitude
-      //          }}
-      //          />
-      //        )})
-      //     }
-      //   })
-      //   }
-      if(this.props.users.length>1){
-      let events = this.props.events.filter(event => event.host_name !== this.props.currentUser.name )
-      return events.map(event => {
-        return(
-        <Marker
-        onClick={() => this.props.openEventSidebar(event)}
-        name={event.name}
-        description={event.description}
-        time={event.time}
-        host_name={event.host_name}
-        event_address={event.event_address}
-        number_of_guests={event.number_of_guests}
-        title={'event-marker.'}
-        key={event.id}
-        position={{
-          lat:event.event_latitude,
-          lng:event.event_longtitude
-        }}
-        />
-      )
-    })}
-  }
+      let users = this.props.users
+      return users.map(user => {
+        const longtitude=user.address_longtitude
+        const latitude=user.address_latitude
+        const host_name= user.name
+        const address= user.address
+
+        if (user.number_of_events_hosting > 0){
+            return(
+               <Marker
+               onClick={() => this.props.openEventSidebar(user)}
+               title={'event-marker.'}
+               key={user.id}
+               position={{
+                 lat:latitude,
+                 lng:longtitude
+               }}
+               />
+             )}})
+          }
+
+  //     if(this.props.users.length>1){
+  //     let events = this.props.events.filter(event => event.host_name !== this.props.currentUser.name )
+  //     return events.map(event => {
+  //       return(
+  //       <Marker
+  //       onClick={() => this.props.openEventSidebar(event)}
+  //       name={event.name}
+  //       description={event.description}
+  //       time={event.time}
+  //       host_name={event.host_name}
+  //       event_address={event.event_address}
+  //       number_of_guests={event.number_of_guests}
+  //       title={'event-marker.'}
+  //       key={event.id}
+  //       position={{
+  //         lat:event.event_latitude,
+  //         lng:event.event_longtitude
+  //       }}
+  //       />
+  //     )
+  //   })}
+  // }
 
 
 
@@ -77,11 +69,11 @@ class gMap extends Component {
 
 
     conditionalSidebar = () => {
-
       if(this.props.sidebarStatus){
         return <MySidebar/>
       }
       else if (this.props.eventSidebarStatus) {
+        // debugger
         return <EventSidebar/>
       }
       else {

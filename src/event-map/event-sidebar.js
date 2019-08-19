@@ -6,15 +6,18 @@ class EventSidebar extends React.Component {
 
 
   conditionalEvents = () => {
-    // debugger
-    if(this.props.events){
-      return (<Events
-      name={this.props.events.name}
-      description={this.props.events.description}
-      time={this.props.events.time}
-      host_name={this.props.events.host_name}
-      event_address={this.props.events.event_address}
-      number_of_guests={this.props.events.number_of_guests}/>)
+    if(this.props.user.id){
+      const host_name= this.props.user.name
+      const address= this.props.user.adress
+      return this.props.user.event_hosting.map(event => {
+        debugger
+        return (<Events
+        className='none-user-events'
+        key= {event.id}
+        event= {event}
+        />)
+      })
+
     }
   }
 
@@ -30,7 +33,7 @@ class EventSidebar extends React.Component {
 
   const mapStateToProps = state =>({
     currentUser: state.userReducer.currentUser,
-    events: state.mapReducer.events
+    user: state.mapReducer.user
   })
 
   export default connect(mapStateToProps)(EventSidebar)
