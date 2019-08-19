@@ -1,7 +1,7 @@
 const defaultState = {
   sidebar: false,
   eventSidebar: false,
-  events: []
+  events: {}
 }
 
 
@@ -12,7 +12,7 @@ export default (state = defaultState, { type, payload }) => {
     case "CLOSE-SIDE-BAR":
       return {...state, sidebar:false};
     case "OPEN-EVENT-SIDE-BAR":
-      return {...state, eventSidebar:true, sidebar:false, events:[...state.events, payload]};
+      return {...state, eventSidebar:true, sidebar:false, events: payload};
     case "CLOSE-EVENT-SIDE-BAR":
       return {...state, eventSidebar:false, events:payload};
     default:

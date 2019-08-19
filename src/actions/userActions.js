@@ -60,7 +60,6 @@ const logOut = () => dispatch =>{
 
 
 const getUsers = () => dispatch => {
-
   fetch("http://localhost:3000/users")
     .then(resp => resp.json())
     .then(users => {
