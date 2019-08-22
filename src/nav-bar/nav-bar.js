@@ -7,7 +7,6 @@ class NavBar extends Component {
   render() {
     return (
       <div>
-      <h3>Layer 2: NavBar</h3>
       <Logo/>
       <Sections/>
       </div>

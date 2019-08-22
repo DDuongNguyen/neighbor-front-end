@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
+import logo from '../assets/my-logo.png'
 
 class Logo extends Component {
 
   render() {
     return (
       <div>
-      <h4>Layer 3: NavBar-logo</h4>
+      <img src={logo} alt='logo' />
       </div>
     );
   }

@@ -14,6 +14,8 @@ class App extends React.Component {
     // const b= 'Central Park Zoo'
     // fetch(`http://dev.virtualearth.net/REST/V1/Routes/Walking?waypoint.0=${a}&waypoint.1=${b}&distanceUnit=mi&optmz=distance&output=json&key=AoNK51DE7kLoGiY_RWNUvx3gFfgSsBHMiJN45CLjB9GIVNR7HheV8RMEd6bAc3ox`)
     // .then(resp => resp.json())
+    // debugger
+    // if (prevProps !== this.props.users){
       this.props.saveEvents()
       this.props.getUsers()
     if (localStorage.token) {
@@ -28,14 +30,15 @@ class App extends React.Component {
         // debugger
 
 
-      }
-    }
+      // }
+    }}
+
+
 
 render(){
   return (
     <div className="App">
       <header className="App-header">
-      <h1>Main Comp: App</h1>
       <Router>
         <Routes />
       </Router>
@@ -51,6 +54,8 @@ const mapDispatchToProps = {
   getUsers: userActions.getUsers
 }
 
-const mapStateToProps = state => ({user:state})
+const mapStateToProps = state => ({
+  users:state.userReducer.users
+})
 
 export default connect(mapStateToProps,mapDispatchToProps)(App);

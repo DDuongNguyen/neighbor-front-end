@@ -15,6 +15,10 @@ export default (state = defaultState, { type, payload }) => {
       return {...state, eventSidebar:true, sidebar:false, user: payload};
     case "CLOSE-EVENT-SIDE-BAR":
       return {...state, eventSidebar:false, user:payload};
+    case "UPDATED-USER":
+      return {...state, user:payload};
+    case "DELETED-EVENT-USER":
+      return {...state, user:payload};
     default:
       return state;
   }

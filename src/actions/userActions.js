@@ -11,7 +11,6 @@ const signUp = newUser => dispatch => {
   fetch("http://localhost:3000/users", config)
 };
 
-
 const signIn = user => dispatch => {
 
   const config = {
@@ -58,7 +57,6 @@ const logOut = () => dispatch =>{
   dispatch({type:'LOGOUT',payload:''})
 }
 
-
 const getUsers = () => dispatch => {
   fetch("http://localhost:3000/users")
     .then(resp => resp.json())
@@ -67,10 +65,35 @@ const getUsers = () => dispatch => {
     });
 };
 
+const updateUser = (user_id,newName,newNumber,newAddress) => dispatch => {
+  // console.log('id',user_id,'newName', newName,'newNumber', newNumber,'newAddress', newAddress);
+  // debugger
+  const config = {
+    method: "PATCH",
+    headers: {
+      "content-type": "application/json",
+      'accept': 'application/json'
+    },
+    body: JSON.stringify({
+      user_id: user_id,
+      newName: newName,
+      newNumber: newNumber,
+      newAddress: newAddress
+    })
+  }
+
+  fetch(`http://localhost:3000/users/${user_id}`,config)
+  .then(resp => resp.json())
+  .then(currentUser => {
+    dispatch({type:"UPDATED-CURRENT-USER",payload:currentUser})
+  })
+}
+
 export default {
   signUp,
   signIn,
   logOut,
   getUsers,
-  persistUser
+  persistUser,
+  updateUser
 }

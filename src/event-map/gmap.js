@@ -15,7 +15,7 @@ class gMap extends Component {
     renderAllEvents = () => {
       // debugger
 
-      let users = this.props.users
+      let users = this.props.users.filter(user => user.id !== this.props.currentUser.id)
       return users.map(user => {
         const longtitude=user.address_longtitude
         const latitude=user.address_latitude
@@ -35,30 +35,6 @@ class gMap extends Component {
                />
              )}})
           }
-
-  //     if(this.props.users.length>1){
-  //     let events = this.props.events.filter(event => event.host_name !== this.props.currentUser.name )
-  //     return events.map(event => {
-  //       return(
-  //       <Marker
-  //       onClick={() => this.props.openEventSidebar(event)}
-  //       name={event.name}
-  //       description={event.description}
-  //       time={event.time}
-  //       host_name={event.host_name}
-  //       event_address={event.event_address}
-  //       number_of_guests={event.number_of_guests}
-  //       title={'event-marker.'}
-  //       key={event.id}
-  //       position={{
-  //         lat:event.event_latitude,
-  //         lng:event.event_longtitude
-  //       }}
-  //       />
-  //     )
-  //   })}
-  // }
-
 
 
     onMapClicked = () => {

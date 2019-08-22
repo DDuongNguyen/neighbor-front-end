@@ -4,6 +4,7 @@ import SignUp from './sign-up.js'
 // import SignUp from './sign-up-validate.js'
 import NavBar from '../nav-bar/nav-bar.js'
 import {connect} from 'react-redux'
+import {Link} from 'react-router-dom'
 
 class Entry extends Component {
 
@@ -13,7 +14,8 @@ renderUser= ()=> {
             <div>
             <h1>Name: {this.props.currentUser.name} </h1>
             <h3>Upcoming Hosting Event:{this.props.currentUser.event_hosting[0].name} on {this.props.currentUser.event_hosting[0].time}  </h3>
-            <h3>Upcoming Attending Event:{this.props.currentUser.event_going[0].event_name} on {this.props.currentUser.event_hosting[0].time}</h3>
+            {this.props.currentUser.event_going.name?<h3>Upcoming Attending Event:{this.props.currentUser.event_going[0].event_name} on {this.props.currentUser.event_hosting[0].time}</h3>:null}
+
             </div>
         )
   }
@@ -25,11 +27,8 @@ renderUser= ()=> {
 
     return (
       <div>
-      <h2>Layer 1: Entry</h2>
-      {this.renderUser()}
-      <SignIn/>
-      <SignUp/>
       <NavBar/>
+      {this.renderUser()}
       </div>
     );
   }

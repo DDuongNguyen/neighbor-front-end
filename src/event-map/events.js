@@ -1,11 +1,62 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
 import eventActions from '../actions/eventActions.js'
+import Messages from './messages.js'
+import FriendList from './friend-list.js'
+import GuestList from './guest-list.js'
 
 class Events extends Component {
 
-  fileSelectedHandler = () => {
-    console.log('momo');
+  state={
+    seen:false,
+    seen2:false,
+    seen3:false,
+    file:{}
+  }
+
+  togglePop = () => {
+   this.setState({
+    seen: !this.state.seen
+   });
+  };
+
+  togglePop2 = () => {
+   this.setState({
+    seen2: !this.state.seen2
+   });
+  };
+
+  togglePop3 = () => {
+   this.setState({
+    seen3: !this.state.seen3
+   });
+  };
+
+  fileSelectedHandler = (event) => {
+    this.setState({file: event.target.files[0]}, () => {
+      if(this.state.file){
+        let formData = new FormData()
+        formData.append("image", this.state.file)
+        this.props.uploadPicture(formData,this.props.event.id)
+      }
+    })
+    console.log(this.state);
+  }
+
+  // handleFileSubmit = event => {
+  //   debugger
+  //   let formData = new FormData()
+  //   formData.append("image", this.state.file)
+  //   this.props.uploadPicture(formData,this.props.event.id)
+  // }
+
+  handleInvite = () => {
+    if(this.props.event.guest_list.some(guest => guest.name === this.props.currentUser.name)) {
+      this.props.deleteInvite(this.props.event.host_id,this.props.currentUser.id,this.props.event.id)
+    } else {
+      // debugger
+      this.props.createInvite(this.props.event.host_id,this.props.currentUser.id,this.props.event.id)
+    }
   }
 
   currentUserEvents = () => {
@@ -14,10 +65,14 @@ class Events extends Component {
       <div id='event-card'>
 
       <div id='img-container' className='image-upload'>
-      <label for="file-input">
-      <img id='upload-icon'src="http://cdn.onlinewebfonts.com/svg/img_234957.png"/>
+
+
+      <label htmlFor="file-input">
+      <img id='upload-icon'src={this.props.event.image}/>
       </label>
       <input type='file' onChange= {this.fileSelectedHandler} id="file-input"/>
+
+
       </div>
 
       <div id='line'/>
@@ -27,11 +82,19 @@ class Events extends Component {
       <h4>Description: {this.props.event.description}</h4>
       <p>Host Name: {this.props.event.host_name} </p>
       <p>Number of Guests:{this.props.event.number_of_guests}</p>
+      <p>Time:{this.props.event.time}</p>
       </div>
 
       <div id='button-section'>
-      <button id='invite-button' onClick={() => this.props.createInvite(this.props.event.host_id)}>Invite</button>
-      <button id='message-button'>Message</button>
+      <button className='invite-button'
+      onClick={this.togglePop2}>Invite</button>
+
+      {this.props.event.number_of_guests>0?
+      <button className='invite-button'
+      onClick={this.togglePop3}>GUEST LIST</button>:null}
+
+      {this.state.seen2 ? <FriendList toggle={this.togglePop2} event={this.props.event}/> : null}
+      {this.state.seen3 ? <GuestList toggle={this.togglePop3} event={this.props.event}/> : null}
       </div>
       </div>
     )
@@ -42,10 +105,7 @@ class Events extends Component {
         <div id='event-card'>
 
         <div id='img-container' className='image-upload'>
-        <label for="file-input">
-        <img id='upload-icon'src="http://cdn.onlinewebfonts.com/svg/img_234957.png"/>
-        </label>
-        <input type='file' onChange= {this.fileSelectedHandler} id="file-input"/>
+        <img id='user-icon'src={this.props.event.image}/>
         </div>
 
         <div id='line'/>
@@ -55,12 +115,21 @@ class Events extends Component {
         <h4>Description: {this.props.event.description}</h4>
         <p>Host Name: {this.props.event.host_name} </p>
         <p>Number of Guests:{this.props.event.number_of_guests}</p>
+        <p>Time:{this.props.event.time}</p>
         </div>
 
         <div id='button-section'>
-        <button id='join-button' onClick={() => this.props.createInvite(this.props.event.host_id,this.props.currentUser.id,this.props.event.id)}>Join</button>
-        <button id='message-button' >Message</button>
+
+          {(this.props.event.guest_list.some(guest => guest.name === this.props.currentUser.name))?
+          <button className='join-button'
+            onClick={this.handleInvite}>Unjoin</button>:
+          <button className='join-button'
+            onClick={this.handleInvite}>Join</button>}
+
+
+        <button id='message-button' onClick={this.togglePop}>Message</button>
         </div>
+        {this.state.seen ? <Messages toggle={this.togglePop} /> : null}
         </div>
       )
     }
@@ -71,7 +140,7 @@ class Events extends Component {
   }
 
   render() {
-    console.log("events", this.props);
+    console.log("ACTIVE STORAGE", this.state.file);
     return (
       <div>
       {this.currentUserEvents()}
@@ -87,7 +156,9 @@ const mapStateToProps = state =>({
 })
 
 const mapDispatchToProps = {
-  createInvite: eventActions.createInvite
+  createInvite: eventActions.createInvite,
+  deleteInvite: eventActions.deleteInvite,
+  uploadPicture: eventActions.uploadPicture
 }
 
 

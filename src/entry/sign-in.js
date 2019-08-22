@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
 import  userActions from '../actions/userActions.js'
+import logo from '../assets/my-logo.png'
 
 class SignIn extends Component {
   state={
@@ -23,33 +24,59 @@ class SignIn extends Component {
   render() {
     return (
       <div>
-      <h3>Layer 2: Entry-sign-in</h3>
       <div className='log-in'>
-      <fieldset>
 
-      <form onSubmit={this.handleSubmit} >
-      <label>Sign in: </label>
+      <div className='nb-card'>
+      <div className="logo"></div>
+
+      <div class="heading">
+      <h4 id='sign-in-word'>Sign In</h4>
+      <div class="sign-up-link-container">
+      <div><a id="sign-up-link" href="/signup" tabindex="-1">Create Account</a> instead?</div>
+      </div>
+      </div>
 
 
-
+      <form onSubmit={this.handleSubmit} id='sign-in-form' >
+      <br/>
+      <div class="nb-form-group">
+      <label for="username" class="pm-form-label">Email or Username</label>
+      <br/>
       <input
       onChange={this.handleChange}
       type='text'
       name='username'
-      placeholder="Username"
-      className="sign-up sign-in reset"/>
+      className="nb-form-control"/>
+      </div>
 
+      <div class="nb-form-group">
+      <label for="password" class="pm-form-label">Password</label>
+      <br/>
       <input
       onChange={this.handleChange}
       type='password'
       name='password'
-      placeholder="Password"
-      className="sign-up sign-in"/>
+      className="nb-form-control"/>
+      </div>
+      <br/>
 
-      <button type='submit'>Submit</button>
+      <div class="nb-form-group">
+      <input type="checkbox" id="remember-me-checkbox" />
+      <label>Remember Me </label>
+      <a class="trouble-signing-in-link" tabindex="-1" href="/trouble-signing-in">Trouble signing in?</a>
+      </div>
+
+      <br/>
+
+      <div class="pm-form-group">
+      <button type="submit" class="nb-btn nb-btn-primary" id="sign-in-btn" tabindex="3">
+      Sign In
+      </button>
+      </div>
+
+
       </form>
-      </fieldset>
-
+      </div>
       </div>
       </div>
     );
