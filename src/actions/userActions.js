@@ -11,7 +11,6 @@ const signUp = newUser => dispatch => {
   fetch("http://localhost:3000/users", config)
 };
 
-
 const signIn = user => dispatch => {
 
   const config = {
@@ -28,7 +27,6 @@ const signIn = user => dispatch => {
     .then(data => {
       if(!data.errors){
       localStorage.token = data.token;
-      alert("token: "+ localStorage.token)
       dispatch({type:"SIGNIN",payload: data.user});
     }
       else{
@@ -58,9 +56,58 @@ const logOut = () => dispatch =>{
   dispatch({type:'LOGOUT',payload:''})
 }
 
+const getUsers = () => dispatch => {
+  fetch("http://localhost:3000/users")
+    .then(resp => resp.json())
+    .then(users => {
+      dispatch({type:'GET',payload:users});
+    });
+};
+
+const updateUser = (user_id,newName,newNumber,image,newAddress) => dispatch => {
+  // console.log('id',user_id,'newName', newName,'newNumber', newNumber,'newAddress', newAddress);
+  // debugger
+  const config = {
+    method: "PATCH",
+    headers: {
+      "content-type": "application/json",
+      'accept': 'application/json'
+    },
+    body: JSON.stringify({
+      user_id: user_id,
+      newName: newName,
+      newNumber: newNumber,
+      newAddress: newAddress,
+      user_image: image
+    })
+  }
+
+  fetch(`http://localhost:3000/users/${user_id}`,config)
+  .then(resp => resp.json())
+  .then(currentUser => {
+    dispatch({type:"UPDATED-CURRENT-USER",payload:currentUser})
+  })
+}
+
+const updateUserImage = (file,user_id) => dispatch => {
+    fetch(`http://localhost:3000/user_upload/${user_id}`, {
+        method: "PATCH",
+        body: file
+      })
+        .then(resp => resp.json())
+        .then(currentUser => {
+            dispatch({type:"UPDATED-CURRENT-USER",payload:currentUser})
+          })
+      }
+
+
+
 export default {
   signUp,
   signIn,
   logOut,
-  persistUser
+  getUsers,
+  persistUser,
+  updateUser,
+  updateUserImage
 }

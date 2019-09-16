@@ -14,7 +14,7 @@ class Map extends Component {
     if (prevProps !== this.props){
       if(!!this.props.currentUser){
   // const address= this.props.currentUser.address
-  const address= '11155 77th ave foresthills NY 11375'
+  const address= this.props.currentUser.address
 
   fetch(`http://dev.virtualearth.net/REST/v1/Locations/${address}?o=json&key=AoNK51DE7kLoGiY_RWNUvx3gFfgSsBHMiJN45CLjB9GIVNR7HheV8RMEd6bAc3ox`)
   .then(resp=>resp.json())
@@ -29,7 +29,7 @@ class Map extends Component {
 
   renderMapAfterFetch= () =>{
     const key ="AoNK51DE7kLoGiY_RWNUvx3gFfgSsBHMiJN45CLjB9GIVNR7HheV8RMEd6bAc3ox"
-    if(this.state.longtitude !== '' && this.state.longtitude !== ''){
+    {
     return (
 
       <ReactBingmaps
@@ -37,7 +37,10 @@ class Map extends Component {
         id = "map"
         bingmapKey = {key}
         zoom = {13}
-        center = {[this.state.longtitude,this.state.latitude]}
+
+        center ={this.props.currentUser.id?
+          [this.state.longtitude,this.state.latitude]:null}
+
         infoboxesWithPushPins ={[
           {
           "location":[this.state.longtitude,this.state.latitude],

@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
-import Logo from './logo.js'
 import Sections from './sections.js'
+import logo from '../assets/my-logo.png'
 
 class NavBar extends Component {
 
   render() {
     return (
-      <div>
-      <h3>Layer 2: NavBar</h3>
-      <Logo/>
+      <div className='nav-bar'>
+      <a id="home-page" href="/about" tabindex="-1">
+      <img src={logo} alt='logo' id='nav-logo'/>
+      </a>
       <Sections/>
       </div>
     );

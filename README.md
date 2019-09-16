@@ -63,6 +63,29 @@ longtitude= data.resourceSets[0].resources[0].bbox[0]
 latitude= data.resourceSets[0].resources[0].bbox[1]
 longtitude: -122.128156, latitude: 47.639555
 longtitude: 47.639555, latitude: -122.128156*
+
+
+
+put all events on map as markers
+book events on map/markers
+*(only if you HAVE an address and  your address is within 800ft radius)*
+
+calendar show all your events on calendar (hosting event and attending events) delete the invitation for that event
+
+a function where you can accept ***
+
+i really wanna do twillio. **
+
+
+
+
+
+
+
+
+
+
+
 ## Available Scripts
 
 In the project directory, you can run:

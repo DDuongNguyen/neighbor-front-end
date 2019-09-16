@@ -1,15 +1,16 @@
 import React, { Component } from 'react';
+import Calendar from 'react-calendar'
 
-class Calendar extends Component {
+class EventCalendar extends Component {
 
   render() {
     return (
-      <div>
-      <h3>Layer 2: EventCalendar-calendar</h3>
+      <div id='calendar-div'>
+      <Calendar/>
       </div>
     );
   }
 
 }
 
-export default Calendar;
+export default EventCalendar;
