@@ -27,7 +27,6 @@ const signIn = user => dispatch => {
     .then(data => {
       if(!data.errors){
       localStorage.token = data.token;
-      alert("token: "+ localStorage.token)
       dispatch({type:"SIGNIN",payload: data.user});
     }
       else{
@@ -65,7 +64,7 @@ const getUsers = () => dispatch => {
     });
 };
 
-const updateUser = (user_id,newName,newNumber,newAddress) => dispatch => {
+const updateUser = (user_id,newName,newNumber,image,newAddress) => dispatch => {
   // console.log('id',user_id,'newName', newName,'newNumber', newNumber,'newAddress', newAddress);
   // debugger
   const config = {
@@ -78,7 +77,8 @@ const updateUser = (user_id,newName,newNumber,newAddress) => dispatch => {
       user_id: user_id,
       newName: newName,
       newNumber: newNumber,
-      newAddress: newAddress
+      newAddress: newAddress,
+      user_image: image
     })
   }
 
@@ -89,11 +89,25 @@ const updateUser = (user_id,newName,newNumber,newAddress) => dispatch => {
   })
 }
 
+const updateUserImage = (file,user_id) => dispatch => {
+    fetch(`http://localhost:3000/user_upload/${user_id}`, {
+        method: "PATCH",
+        body: file
+      })
+        .then(resp => resp.json())
+        .then(currentUser => {
+            dispatch({type:"UPDATED-CURRENT-USER",payload:currentUser})
+          })
+      }
+
+
+
 export default {
   signUp,
   signIn,
   logOut,
   getUsers,
   persistUser,
-  updateUser
+  updateUser,
+  updateUserImage
 }

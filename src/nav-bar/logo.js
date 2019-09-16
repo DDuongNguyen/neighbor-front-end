@@ -5,8 +5,8 @@ class Logo extends Component {
 
   render() {
     return (
-      <div>
-      <img src={logo} alt='logo' />
+      <div className='nav-bar-logo'>
+      <img src={logo} alt='logo' className='logo'/>
       </div>
     );
   }

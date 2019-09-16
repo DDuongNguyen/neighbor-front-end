@@ -40,7 +40,7 @@ class EventCalendarContent extends Component {
       name='eventDescription'
       placeholder="Event Description"/>
       <br/>
-      <button>Submit</button>
+      <button id='join-button'>Submit</button>
       </form>
       <br/>
       <img src='http://bestanimations.com/Animals/Mammals/Cats/cats/cute-kitty-animated-gif-59.gif' alt='cat' height='200px' width='200px'/>

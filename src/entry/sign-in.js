@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from "react-redux";
 import  userActions from '../actions/userActions.js'
 import logo from '../assets/my-logo.png'
+import NavBar from '../nav-bar/nav-bar.js'
 
 class SignIn extends Component {
   state={
@@ -19,20 +20,22 @@ class SignIn extends Component {
   handleSubmit = (event) => {
     event.preventDefault()
     this.props.signIn(this.state)
+    this.props.history.push('/map')
   }
 
   render() {
     return (
       <div>
+      <NavBar/>
       <div className='log-in'>
 
-      <div className='nb-card'>
+      <div className='nb-sign-in-card'>
       <div className="logo"></div>
 
       <div class="heading">
       <h4 id='sign-in-word'>Sign In</h4>
       <div class="sign-up-link-container">
-      <div><a id="sign-up-link" href="/signup" tabindex="-1">Create Account</a> instead?</div>
+      <div><a id="sign-up-link" href="/signup" tabIndex="-1">Create Account</a> instead?</div>
       </div>
       </div>
 
@@ -63,13 +66,13 @@ class SignIn extends Component {
       <div class="nb-form-group">
       <input type="checkbox" id="remember-me-checkbox" />
       <label>Remember Me </label>
-      <a class="trouble-signing-in-link" tabindex="-1" href="/trouble-signing-in">Trouble signing in?</a>
+      <a class="trouble-signing-in-link" tabIndex="-1" href="/trouble-signing-in">Trouble signing in?</a>
       </div>
 
       <br/>
 
       <div class="pm-form-group">
-      <button type="submit" class="nb-btn nb-btn-primary" id="sign-in-btn" tabindex="3">
+      <button type="submit" class="nb-btn nb-btn-primary" id="sign-in-btn" tabIndex="3">
       Sign In
       </button>
       </div>

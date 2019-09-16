@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
 import userActions from '../actions/userActions.js'
+import house from '../assets/trans-house.png'
+import NavBar from '../nav-bar/nav-bar.js'
 
 class SignUp extends Component {
   state={
@@ -21,30 +23,50 @@ class SignUp extends Component {
   handleSubmit = (event) => {
     event.preventDefault()
     this.props.signUp(this.state)
+    this.props.history.push('/signin')
   }
 
   render() {
     return (
       <div>
+      <NavBar/>
       <div className='log-in'>
 
-      <div className='nb-card'>
-      <div className="logo"></div>
+      <div className='nb-sign-up-card'>
 
-      <div class="heading">
+      <div className= 'left-section'>
+      <div className="sign-up-logo"></div>
+      <div className="text-container">
+            <h2>WHY SIGN UP?</h2>
+            <h4>
+              <ul>
+                <li>I worked real hard on this</li>
+                <li>I need a job after this</li>
+                <li>I think it's fun</li>
+                <li>It's free...</li>
+              </ul>
+            </h4>
+      </div>
+      <div className="side-image">
+      <img src={house} alt='houses' className='house-image'/>
+      </div>
+      </div>
+
+      <div className='right-section'>
+      <div className="heading">
       <h4 id='sign-up-word'>Create Account</h4>
-      <div class="sign-in-link-container">
-      <div><a id="sign-in-link" href="/signin" tabindex="-1">Sign In</a> instead?</div>
+      <div className="sign-in-link-container">
+      <div><a id="sign-in-link" href="/signin" tabIndex="-1">Sign In</a> instead?</div>
       </div>
       </div>
 
 
       <form onSubmit={this.handleSubmit} id='sign-in-form' >
-      <br/>
 
-      <div class="nb-form-group">
-      <label for="username" class="pm-form-label">Email or Username</label>
-      <br/>
+
+      <div className="nb-form-group">
+      <label htmlFor="username" className="nb-form-label">Email or Username</label>
+
       <input
       onChange={this.handleChange}
       type='text'
@@ -52,9 +74,9 @@ class SignUp extends Component {
       className="nb-form-control"/>
       </div>
 
-      <div class="nb-form-group">
-      <label for="password" class="pm-form-label">Password</label>
-      <br/>
+      <div className="nb-form-group">
+      <label htmlFor="password" className="nb-form-label">Password</label>
+
       <input
       onChange={this.handleChange}
       type='password'
@@ -62,9 +84,9 @@ class SignUp extends Component {
       className="nb-form-control"/>
       </div>
 
-      <div class="nb-form-group">
-      <label for="name" class="pm-form-label">Name</label>
-      <br/>
+      <div className="nb-form-group">
+      <label htmlFor="name" className="nb-form-label">Name</label>
+
       <input
       onChange={this.handleChange}
       type='text'
@@ -72,9 +94,9 @@ class SignUp extends Component {
       className="nb-form-control"/>
       </div>
 
-      <div class="nb-form-group">
-      <label for="phone_number" class="pm-form-label">Phone Number</label>
-      <br/>
+      <div className="nb-form-group">
+      <label htmlFor="phone_number" className="nb-form-label">Phone Number</label>
+
       <input
       onChange={this.handleChange}
       type='text'
@@ -82,9 +104,9 @@ class SignUp extends Component {
       className="nb-form-control"/>
       </div>
 
-      <div class="nb-form-group">
-      <label for="address" class="pm-form-label">Address</label>
-      <br/>
+      <div className="nb-form-group">
+      <label htmlFor="address" className="nb-form-label">Address</label>
+
       <input
       onChange={this.handleChange}
       type='text'
@@ -92,24 +114,25 @@ class SignUp extends Component {
       className="nb-form-control"/>
       </div>
 
-      <br/>
 
-      <div class="nb-form-group">
+
+      <div className="nb-form-group">
       <input type="checkbox" id="remember-me-checkbox" />
       <label>Remember Me </label>
       </div>
 
-      <br/>
 
-      <div class="pm-form-group">
-      <button type="submit" class="nb-btn nb-btn-primary" id="sign-in-btn" tabindex="3">
+
+      <div className="nb-form-group">
+      <button type="submit" className="nb-btn nb-btn-primary" id="sign-in-btn" tabIndex="3">
       Create Free Account
       </button>
-      <p class="terms-link">By signing up, you agree to the <a href="https://www.youtube.com/watch?v=wZZ7oFKsKzY" target="_blank" tabindex="-1">Terms of Use</a>.</p>
+      <p className="terms-link">By signing up, you agree to the <a href="https://www.youtube.com/watch?v=jTf03_rzVt0" target="_blank" tabIndex="-1">Terms of Use</a>.</p>
       </div>
 
 
       </form>
+      </div>
       </div>
       </div>
       </div>

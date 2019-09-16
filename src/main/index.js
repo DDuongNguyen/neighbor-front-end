@@ -6,9 +6,8 @@ class Main extends Component {
   render() {
     return (
       <div>
-      <h2>Layer 1: Main</h2>
-      <MainContent/>
       <NavBar/>
+      <MainContent/>
       </div>
     );
   }

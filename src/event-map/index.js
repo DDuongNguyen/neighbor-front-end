@@ -16,10 +16,8 @@ class EventMap extends Component {
   render() {
     return (
       <div>
-      <h2>Layer 1: EventMap</h2>
-      <EventMapContent/>
-      <Map/>
       <NavBar/>
+      <Map/>
       </div>
     );
   }

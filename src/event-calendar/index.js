@@ -18,11 +18,11 @@ class EventCalendar extends Component {
   render() {
     return (
       <div>
+      <NavBar/>
       <div  id='calendar-container'>
       <Calendar onClickDay={(stuff)=>this.props.openCalendarSidebar(stuff)}/>
       {this.conditionalSidebar()}
       </div>
-      <NavBar/>
       </div>
     );
   }

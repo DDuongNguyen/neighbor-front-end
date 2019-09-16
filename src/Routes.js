@@ -7,6 +7,8 @@ import EventMap from './event-map';
 import Profile from './profile';
 import SignUp from './entry/sign-up.js';
 import SignIn from './entry/sign-in.js';
+import F404 from './entry/404.js';
+import About from './entry/welcome.js';
 
 const Routes = () => {
   return (
@@ -16,8 +18,10 @@ const Routes = () => {
       <Route path="/calendar" component={EventCalendar} />
       <Route path="/profile" component={Profile} />
       <Route path="/signup" component={SignUp} />
-      <Route path="/SignIn" component={SignIn} />
-      <Route path="/" component={Main} />
+      <Route path="/signin" component={SignIn} />
+      <Route path="/404" component={F404} />
+      <Route path="/about" component={About} />
+      <Route path="/" component={F404} />
     </Switch>
   );
 };

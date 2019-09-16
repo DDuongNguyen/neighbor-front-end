@@ -68,7 +68,7 @@ class Events extends Component {
 
 
       <label htmlFor="file-input">
-      <img id='upload-icon'src={this.props.event.image}/>
+      <img id='upload-icon'src={this.props.event.event_image}/>
       </label>
       <input type='file' onChange= {this.fileSelectedHandler} id="file-input"/>
 
@@ -105,7 +105,7 @@ class Events extends Component {
         <div id='event-card'>
 
         <div id='img-container' className='image-upload'>
-        <img id='user-icon'src={this.props.event.image}/>
+        <img id='user-icon'src={this.props.event.event_image}/>
         </div>
 
         <div id='line'/>

@@ -20,7 +20,8 @@ class UpdateForm extends Component {
   handleSubmit = (event) => {
     event.preventDefault()
     debugger
-    this.props.updateUser(this.props.currentUser.id,this.state.name,this.state.phone_number,this.props.firstSearchResult)
+    this.props.updateUser(this.props.currentUser.id,this.state.name,this.state.phone_number,this.props.currecurrentUser.user_image,this.props.firstSearchResult)
+    // this.props.history.push('/profile')
   }
 
 
@@ -44,7 +45,7 @@ class UpdateForm extends Component {
       placeholder={this.props.currentUser.phone_number}
       className="sign-up sign-in"/>
       <FuzzySearch/>
-      <button type='submit'>Edit</button>
+      <button type='submit' id='edit-button'>Edit</button>
       </form>
       </div>
       </div>
