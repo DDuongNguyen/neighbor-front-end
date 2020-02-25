@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import  userActions from '../actions/userActions.js'
 import  FuzzySearch from './fuzzy-search.js'
 import  FirstSearchResult from './first-search-result.js'
+import { withRouter } from 'react-router-dom'
 
 class UpdateForm extends Component {
 
@@ -20,8 +21,9 @@ class UpdateForm extends Component {
   handleSubmit = (event) => {
     event.preventDefault()
     debugger
-    this.props.updateUser(this.props.currentUser.id,this.state.name,this.state.phone_number,this.props.currecurrentUser.user_image,this.props.firstSearchResult)
-    // this.props.history.push('/profile')
+    this.props.updateUser(this.props.currentUser.id,this.state.name,this.state.phone_number,this.props.firstSearchResult)
+    this.props.toggle()
+    this.props.history.push('/profile')
   }
 
 
@@ -62,4 +64,4 @@ class UpdateForm extends Component {
       updateUser: userActions.updateUser
   }
 
-export default connect(mapStateToProps,mapDispatchToProps)(UpdateForm);
+export default withRouter(connect(mapStateToProps,mapDispatchToProps)(UpdateForm));

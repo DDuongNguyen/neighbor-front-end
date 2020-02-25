@@ -3,11 +3,8 @@ import { connect } from "react-redux";
 import GoogleMapReact from 'google-map-react';
 import mapActions from '../actions/mapActions.js'
 import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
-// import Sidebar from './sidebar.js'
 import MySidebar from './my-sidebar.js'
 import EventSidebar from './event-sidebar.js'
-// import {GoogleMap,withScriptjs,withGoogleMap,Marker} from 'react-google-maps';
-
 
 
 class gMap extends Component {
@@ -55,18 +52,10 @@ class gMap extends Component {
       else {
         return null
       }
-      // return(this.props.eventSidebarStatus ? <EventSidebar/>: null)
-      // debugger
-      // if(event.target.parentNode.title === 'current-user-marker'){
-      //   return(this.props.sidebarStatus ? <MySidebar className='side-bar'/>: null)
-      // }
-      // else{
-      //   return(this.props.sidebarStatus ? <EventSidebar className='side-bar'/>: null)
-      // }
     }
 
   render() {
-    const icon= 'https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/96a97770-7d16-4f0b-b2b5-e47810c4f2a0/d8m16rm-65395600-7598-4280-9a22-119beef84de8.png/v1/fill/w_776,h_1029,strp/dragon_age_inquisitor_helmet_silhouette_by_kiraakumachi_d8m16rm-pre.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTMwMiIsInBhdGgiOiJcL2ZcLzk2YTk3NzcwLTdkMTYtNGYwYi1iMmI1LWU0NzgxMGM0ZjJhMFwvZDhtMTZybS02NTM5NTYwMC03NTk4LTQyODAtOWEyMi0xMTliZWVmODRkZTgucG5nIiwid2lkdGgiOiI8PTk4MiJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.Ii5I7pvymfavhDecwmcDdviyTtxq1Hl4AcvbTRwNozs'
+    const icon = "https://s3.amazonaws.com/awsmp-logos/datadoglogo.png";
 
     return (
       <div id='map-container'>
@@ -120,7 +109,6 @@ class gMap extends Component {
       closeEventSidebar: mapActions.closeEventSidebar
     }
 
-    // export default connect(mapStateToProps)(gMap);
     export default connect(mapStateToProps,mapDispatchToProps)(GoogleApiWrapper({
       apiKey: 'AIzaSyADjgs40qnidjU2jRdew7QxOlYxjPHMcXg'
     })(gMap))

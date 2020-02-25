@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import SignIn from './sign-in.js'
 import SignUp from './sign-up.js'
-// import SignUp from './sign-up-validate.js'
 import NavBar from '../nav-bar/nav-bar.js'
 import {connect} from 'react-redux'
 import userActions from '../actions/userActions'
@@ -86,11 +85,3 @@ export default connect(mapStateToProps,mapDispatchToProps)(Entry);
 
 
 
-
-
-
-//
-// <h1>Upcoming Hosting Event: {this.props.currentUser &&  this.props.currentUser.event_hosting[0].name} </h1>
-
-
-// <h1>Upcoming Attending Event: {this.props.currentUser && this.props.currentUser.event_going} </h1>

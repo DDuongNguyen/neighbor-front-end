@@ -8,9 +8,7 @@ class GuestList extends Component {
 
   renderAllUser=()=>{
     // debugger
-    // let users = this.props.users.filter(user => user.id !== this.props.currentUser.id)
     let guests = this.props.event.guest_list
-    // let noneInvitedUser= users.filter(user => !guests.some(guest=> user.name === guest.name))
     return guests.map(user => {
       return (<Guest name={user.name} host_id={this.props.currentUser.id}  user_id={user.id} event_id={this.props.event.id}/>)
     })

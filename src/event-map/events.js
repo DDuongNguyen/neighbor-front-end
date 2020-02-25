@@ -43,13 +43,6 @@ class Events extends Component {
     console.log(this.state);
   }
 
-  // handleFileSubmit = event => {
-  //   debugger
-  //   let formData = new FormData()
-  //   formData.append("image", this.state.file)
-  //   this.props.uploadPicture(formData,this.props.event.id)
-  // }
-
   handleInvite = () => {
     if(this.props.event.guest_list.some(guest => guest.name === this.props.currentUser.name)) {
       this.props.deleteInvite(this.props.event.host_id,this.props.currentUser.id,this.props.event.id)

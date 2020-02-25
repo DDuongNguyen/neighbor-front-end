@@ -1,8 +1,15 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
 import  userActions from '../actions/userActions.js'
+import { withRouter } from 'react-router-dom'
 
 class Sections extends Component {
+
+  procLogout=() => {
+    // debugger
+    this.props.logOut()
+    this.props.history.push('/about')
+  }
 
   conditionalSections  = () => {
     if (this.props.currentUser.id){
@@ -21,7 +28,7 @@ class Sections extends Component {
         </div>
 
         <div className='secondary-menu'>
-        <a className='nav-button' onClick={this.props.logOut}>Sign Out</a>
+        <a className='nav-button' onClick={this.procLogout}>Sign Out</a>
         </div>
 
         </div>
@@ -65,4 +72,4 @@ const mapDispatchToProps={
 const mapStateToProps = (state) => ({
   currentUser: state.userReducer.currentUser
 })
-export default connect(mapStateToProps,mapDispatchToProps)(Sections);
+export default withRouter(connect(mapStateToProps,mapDispatchToProps)(Sections));

@@ -64,20 +64,6 @@ const uploadPicture = (file,eventId) => dispatch => {
       .then(currentUser => {
           dispatch({type:"UPDATED-CURRENT-USER",payload:currentUser})
         })}
-  // const config = {
-  //   method: "POST",
-  //   headers: {
-  //     "Content-Type": "application/json"
-  //   },
-  //   body: JSON.stringify({
-  //     inviter_id:hostId,
-  //     invitee_id:currentUserId,
-  //     event_id:eventId
-  //   })
-  // }
-  //
-  //     fetch("http://localhost:3000/invites",config)
-  //   })
 
 const currentUserDeleteInvite = (hostId,currentUserId,eventId) => dispatch => {
   console.log('host id',hostId,'current user id',currentUserId,'event id',eventId);

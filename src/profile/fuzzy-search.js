@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import  SearchingAddress from './searching-address.js'
-// import  FirstSearchResult from './first-search-result.js'
 import { connect } from "react-redux";
 
 

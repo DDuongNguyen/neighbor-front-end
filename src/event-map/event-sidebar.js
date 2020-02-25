@@ -38,5 +38,3 @@ class EventSidebar extends React.Component {
   export default connect(mapStateToProps)(EventSidebar)
 
 
-
-//

@@ -16,6 +16,7 @@ class EventCalendarContent extends Component {
     debugger
     this.props.createEvent(this.props.currentUser.id,this.state.eventName,this.state.eventDescription,this.props.time)
     alert('You have successfully created an event')
+    window.location.reload()
   }
 
   handleChange=event=>{

@@ -27,7 +27,7 @@ const signIn = user => dispatch => {
     .then(data => {
       if(!data.errors){
       localStorage.token = data.token;
-      dispatch({type:"SIGNIN",payload: data.user});
+      dispatch({type:"SIGNIN",payload: data.user}).then(window.location.reload());
     }
       else{
         alert("wrong cats mang")
@@ -45,12 +45,13 @@ const persistUser = () => dispatch => {
     });
 };
 
-const logOut = () => dispatch =>{
+const logOut = (history) => dispatch =>{
   // debugger
   // console.log('meow');
   if (localStorage.token){
   localStorage.removeItem('token');
-  alert('u got log out m8')
+  alert('BYE!')
+  // history.push('/')
   }
   else{alert('do a log in first m8')}
   dispatch({type:'LOGOUT',payload:''})
@@ -64,8 +65,7 @@ const getUsers = () => dispatch => {
     });
 };
 
-const updateUser = (user_id,newName,newNumber,image,newAddress) => dispatch => {
-  // console.log('id',user_id,'newName', newName,'newNumber', newNumber,'newAddress', newAddress);
+const updateUser = (user_id,newName,newNumber,newAddress) => dispatch => {
   // debugger
   const config = {
     method: "PATCH",
@@ -77,8 +77,7 @@ const updateUser = (user_id,newName,newNumber,image,newAddress) => dispatch => {
       user_id: user_id,
       newName: newName,
       newNumber: newNumber,
-      newAddress: newAddress,
-      user_image: image
+      newAddress: newAddress
     })
   }
 

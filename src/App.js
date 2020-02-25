@@ -4,33 +4,15 @@ import {connect} from 'react-redux'
 import userActions from './actions/userActions'
 import eventActions from './actions/eventActions'
 import { BrowserRouter as Router } from "react-router-dom";
-// import NavBar from './nav-bar/nav-bar.js'
 import './App.css';
 
 class App extends React.Component {
 
   componentDidMount(){
-    // const a= '81 Prospect St, Brooklyn, NY, 11201, USA'
-    // const b= 'Central Park Zoo'
-    // fetch(`http://dev.virtualearth.net/REST/V1/Routes/Walking?waypoint.0=${a}&waypoint.1=${b}&distanceUnit=mi&optmz=distance&output=json&key=AoNK51DE7kLoGiY_RWNUvx3gFfgSsBHMiJN45CLjB9GIVNR7HheV8RMEd6bAc3ox`)
-    // .then(resp => resp.json())
-    // debugger
-    // if (prevProps !== this.props.users){
       this.props.saveEvents()
       this.props.getUsers()
     if (localStorage.token) {
       this.props.persistUser();
-      // if(this.props.user.userReducer.currentUser !== {}){
-      // const id= this.props.user.userReducer.currentUser.id
-      // // debugger
-      // fetch(`http://localhost:3000/users/${id}`)
-      // .then(resp=>resp.json())
-      // .then(data => {
-      //   console.log(data);
-        // debugger
-
-
-      // }
     }}
 
 

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { ReactBingmaps } from 'react-bingmaps';
-// import GoogleMapReact from 'google-map-react';
 import { connect } from "react-redux";
 class Map extends Component {
 
@@ -13,7 +12,6 @@ class Map extends Component {
   componentDidUpdate(prevProps){
     if (prevProps !== this.props){
       if(!!this.props.currentUser){
-  // const address= this.props.currentUser.address
   const address= this.props.currentUser.address
 
   fetch(`http://dev.virtualearth.net/REST/v1/Locations/${address}?o=json&key=AoNK51DE7kLoGiY_RWNUvx3gFfgSsBHMiJN45CLjB9GIVNR7HheV8RMEd6bAc3ox`)
@@ -97,6 +95,3 @@ export default connect(mapStateToProps)(Map);
 
 
 
-
-// mapOptions = { {'maxZoom': 1, 'minZoom': 10} }
-// "infoboxAddHandler": {"type" : "click", callback: () => alert('Bigger Peen') },

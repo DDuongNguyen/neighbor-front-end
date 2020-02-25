@@ -27,7 +27,6 @@ class Messages extends Component {
   render() {
     return (
       <div>
-      <h1>MeMeow</h1>
       <form onSubmit={this.handleSubmit}>
       <textarea
       onChange={this.handleChange}

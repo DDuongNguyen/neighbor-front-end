@@ -6,7 +6,7 @@ import {connect} from 'react-redux'
 class Welcome extends Component {
 
   renderWelcome = () =>{
-    debugger
+    // debugger
     if(this.props.currentUser.id){
       return(
         <div className='welcome-content'>
